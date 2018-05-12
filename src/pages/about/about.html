@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+     Search
+     <ion-searchbar [(ngModel)]="query" name="query" (ionInput)="getSearch(query)"></ion-searchbar>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list >
+    <ion-item  *ngFor="let a of anime" (click)="viewItem(a)">
+      <ion-thumbnail item-start>
+        <img src="{{a.image_url}}">
+      </ion-thumbnail>
+      <h2 text-wrap> <div [innerHTML]="a.title"></div></h2>
+      
+    </ion-item>
+  </ion-list>
+</ion-content>

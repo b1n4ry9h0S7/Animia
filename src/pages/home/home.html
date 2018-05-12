@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Animia</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding-top>
+          <ion-list>
+            <ion-item>
+              <ion-label>Day:</ion-label>
+              <ion-select [(ngModel)]="day" name="day" (ionChange)="getSchedule()" popover>
+                <ion-option value="monday">Monday</ion-option>
+                <ion-option value="tuesday">Tuesday</ion-option>
+                <ion-option value="wednesday">Wednesday</ion-option>
+                <ion-option value="thursday">Thursday</ion-option>
+                <ion-option value="friday">Friday</ion-option>
+                <ion-option value="saturday">Saturday</ion-option>
+                <ion-option value="sunday">Sunday</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+    <hr>
+  <ion-list no-padding>
+    <ion-item  *ngFor="let a of anime" (click)="viewItem(a)">
+      <ion-thumbnail item-start>
+        <img id="img" src="{{a.image_url}}">
+      </ion-thumbnail>
+      <h2 text-wrap> <div [innerHTML]="a.title"></div></h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

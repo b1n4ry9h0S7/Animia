@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Top Anime
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+          <ion-label>Filter:</ion-label>
+          <ion-select [(ngModel)]="query" name="query" (ionChange)="getTop(query)">
+            <ion-option value="airing">Airing</ion-option>
+            <ion-option value="upcoming">Upcoming</ion-option>
+            <ion-option value="tv">TV</ion-option>
+            <ion-option value="movie">Movie</ion-option>
+            <ion-option value="ova">OVA</ion-option>
+            <ion-option value="special">Special</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+<hr>
+    <ion-list >
+      <ion-item  *ngFor="let a of anime" (click)="viewItem(a)">
+        <ion-thumbnail item-start>
+          <img src="{{a.image_url}}">
+        </ion-thumbnail>
+        <h2 text-wrap>{{a.title}}</h2>
+       <strong>Rank: </strong> <ion-badge>{{a.rank}}</ion-badge>
+      </ion-item>
+    </ion-list>
+  </ion-content>
