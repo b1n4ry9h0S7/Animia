@@ -20,19 +20,18 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
 
-      this.localNotifications.schedule({
-        id:1,
-        title: 'Animia',
-        text: 'Testing!',
-        trigger: {at: new Date(new Date().setHours(22,42,0))}
-     });
+    //   this.localNotifications.schedule({
+    //     id:1,
+    //     title: 'Animia',
+    //     text: 'Testing!',
+    //     trigger: {at: new Date(new Date().setHours(22,42,0))}
+    //  });
 
       this.localNotifications.schedule({
-        id:2,
         title: 'Animia',
         text: 'Look whats airing today!',
-        trigger: {at: new Date(new Date().setHours(9,0,0))},
-        every: 'day'
+        trigger: {at: new Date(new Date().setHours(9,25,0))},
+        // every: 'day'
      });
      this.backgroundMode.enable();
     });
