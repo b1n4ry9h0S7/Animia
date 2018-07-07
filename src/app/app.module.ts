@@ -16,9 +16,8 @@ import { DetailsPage } from '../pages/details/details';
 import { InfoPage } from '../pages/info/info';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { SearchProvider } from '../providers/search/search';
-import { TopProvider } from '../providers/top/top';
 import { BackgroundMode } from '@ionic-native/background-mode';
+import { AnidetailsPage } from '../pages/anidetails/anidetails';
 
 @NgModule({
   declarations: [
@@ -28,13 +27,10 @@ import { BackgroundMode } from '@ionic-native/background-mode';
     HomePage,
     TabsPage,
     DetailsPage,
+    AnidetailsPage,
     InfoPage
   ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp),
-    HttpClientModule
-  ],
+  imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -43,18 +39,16 @@ import { BackgroundMode } from '@ionic-native/background-mode';
     HomePage,
     TabsPage,
     DetailsPage,
+    AnidetailsPage,
     InfoPage
-
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestProvider,
     SocialSharing,
     LocalNotifications,
-    SearchProvider,
-    TopProvider,
     BackgroundMode
   ]
 })

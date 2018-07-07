@@ -1,20 +1,28 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title text-center>
-     Search
-     <ion-searchbar [(ngModel)]="query" name="query" (ionInput)="getSearch(query)"></ion-searchbar>
+      Search
+      <ion-searchbar id="search" [(ngModel)]="query" name="query" (ionInput)="getSearch(query)"></ion-searchbar>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list >
-    <ion-item  *ngFor="let a of anime" (click)="viewItem(a)">
-      <ion-thumbnail item-start>
-        <img src="{{a.image_url}}">
-      </ion-thumbnail>
-      <h2 text-wrap> <div [innerHTML]="a.title"></div></h2>
-      
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let a of anime" (click)="viewItem(a.mal_id)">
+        <ion-card id="card" nopadding nomargin>
+          <ion-card-content>
+            <!-- <ion-thumbnail item-start> -->
+            <img id="img" src="{{a.image_url}}">
+            <!-- </ion-thumbnail> -->
+            <h2 id="title" text-wrap>
+              <div [innerHTML]="a.title"></div>
+            </h2>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

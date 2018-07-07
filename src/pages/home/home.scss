@@ -1,6 +1,24 @@
 page-home {
-    #img {
-        border-radius:10%;
-        height: 95px;
-      }
+  // background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+
+  #img {
+    border-radius: 15%;
+    // height: 95px;
+  }
+  #card {
+    border-radius: 5%;
+    padding: 0;
+    // background-color: rgb(152, 236, 222);
+
+    #title {
+      margin-top: 10px;
+      font-size: 100%;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+  #select {
+    // padding-right: 30%;
+    padding-left: 37%;
+  }
 }

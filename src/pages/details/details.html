@@ -1,82 +1,109 @@
-<!--
-  Generated template for the DetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Details</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content >
-<h4 id="text" [innerHTML]="data.title"></h4>
-<ion-grid>
+<ion-content>
+  <h4 id="text" [innerHTML]="anime.title"></h4>
+  <b>
+    <p id="text" [innerHTML]="anime.title_japanese"></p>
+  </b>
+  <p id="text" [innerHTML]="anime.title_english"></p>
+  <hr>
   <ion-row>
     <ion-col>
-      <img id="imgu" src="{{data.image_url}}" alt="">
+      <img id="imgu" src="{{anime.image_url}}" alt="">
     </ion-col>
     <ion-col>
       <ion-list>
         <ion-item>
-            <strong>Episodes:&nbsp; <ion-badge><div *ngIf="data.episodes else novalue">{{data.episodes}}</div></ion-badge>
-              <ng-template #novalue>?</ng-template>
-              </strong> 
+          <strong>Episodes:&nbsp;
+            <ion-badge>
+              <div *ngIf="anime.episodes else novalue">{{anime.episodes}}</div>
+            </ion-badge>
+            <ng-template #novalue>?</ng-template>
+          </strong>
         </ion-item>
         <ion-item>
-            <strong>Source: <ion-badge><div *ngIf="data.source else novalue">{{data.source}}</div></ion-badge>  </strong>
+          <strong>Source:
+            <ion-badge>
+              <div *ngIf="anime.source else novalue">{{anime.source}}</div>
+            </ion-badge>
+          </strong>
         </ion-item>
         <ion-item>
-            <strong>Score: <ion-badge> <div *ngIf="data.score else novalue">{{data.score}}</div></ion-badge>  </strong> 
+          <strong>Score:
+            <ion-badge>
+              <div *ngIf="anime.score else novalue">{{anime.score}}</div>
+            </ion-badge>
+          </strong>
         </ion-item>
         <ion-item>
-            <button ion-button outline block icon-right (click)="ShareThis()">
-                Share
-                <ion-icon name="logo-whatsapp"></ion-icon>
-              </button>
+          <strong>Rank:
+            <ion-badge>
+              <div *ngIf="anime.rank else novalue">{{anime.rank}}</div>
+            </ion-badge>
+          </strong>
         </ion-item>
-        <ion-item> <a ion-button outline block icon-right href="{{data.url}}">View in MAL
-            <ion-icon name="md-link"></ion-icon></a></ion-item>
-        <ion-item></ion-item>
-        
+        <ion-item>
+          <strong>Status:
+            <ion-badge>
+              <div *ngIf="anime.status else novalue">{{anime.status}}</div>
+            </ion-badge>
+          </strong>
+        </ion-item>
       </ion-list>
     </ion-col>
   </ion-row>
-  </ion-grid>
-  <ion-card  *ngIf="data.synopsis" >
-    <ion-card-header>
-     <strong><u>Description</u></strong> 
+  <hr>
+  <ion-card *ngIf="anime.airing">
+    <ion-card-header text-center>
+      <strong>
+        <u>Broadcast time</u>
+      </strong>
     </ion-card-header>
     <ion-card-content>
-      <div [innerHTML]="data.synopsis"></div>
+      <div text-center>{{ anime.broadcast }}</div>
     </ion-card-content>
   </ion-card>
-  <ion-card  *ngIf="data.description" >
-      <ion-card-header>
-       <strong><u>Description</u></strong> 
-      </ion-card-header>
-      <ion-card-content>
-        <div [innerHTML]="data.description"></div>
-      </ion-card-content>
-    </ion-card>
-  <ion-card *ngIf="data.airing_start">
-      <ion-card-header >
-       <strong><u>Airing Start</u></strong> 
-      </ion-card-header>
-      <ion-card-content>
-        <div [innerHTML]="data.airing_start"></div>
-      </ion-card-content>
-    </ion-card>
-    <ion-card *ngIf="data.airing_end">
-        <ion-card-header>
-         <strong><u>Airing End</u></strong> 
-        </ion-card-header>
-        <ion-card-content>
-          <div [innerHTML]="data.airing_end"></div>
-        </ion-card-content>
-      </ion-card>
+  <hr>
+  <ion-card *ngIf="anime.synopsis">
+    <ion-card-header text-center>
+      Click to view Description
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button outline block icon-right (click)="DescModal(anime.synopsis)">
+        Click to view descrition
+        <!-- <ion-icon name="logo-whatsapp"></ion-icon> -->
+      </button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="anime.description">
+    <ion-card-header text-center>
+      Click to view Description
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button outline block icon-right (click)="DescModal(anime.description)">
+        Click to view descrition
+        <!-- <ion-icon name="logo-whatsapp"></ion-icon> -->
+      </button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header text-center>
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button outline block icon-right (click)="ShareThis()">
+        Share
+        <ion-icon name="logo-whatsapp"></ion-icon>
+      </button>
+      <a ion-button outline block icon-right href="{{anime.url}}">View in MAL
+        <ion-icon name="md-link"></ion-icon>
+      </a>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

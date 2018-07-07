@@ -10,12 +10,11 @@ import { map, catchError } from 'rxjs/operators';
 */
 @Injectable()
 export class RestProvider {
-
   constructor(public http: HttpClient) {
-    console.log('Hello RestProvider Provider');
+    // console.log('Hello RestProvider Provider');
   }
 
-  getSchedule(): Observable<{}> {
+  getSchedule() {
     return this.http.get(this.apiUrl).pipe(
       map(this.extractData),
       catchError(this.handleError)
@@ -24,10 +23,35 @@ export class RestProvider {
   private apiUrl = 'https://api.jikan.moe/schedule';
   private extractData(res: Response) {
     let body = res;
-    return body || { };
+    return body || {};
   }
-  
-  private handleError (error: Response | any) {
+
+  getSearch(query): Observable<{}> {
+    return this.http
+      .get('https://api.jikan.moe/search/anime/' + query + '/')
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError)
+      );
+  }
+
+  getTop(query): Observable<{}> {
+    return this.http
+      .get('https://api.jikan.moe/top/anime/1/' + query + '/')
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError)
+      );
+  }
+
+  getDetails(id): Observable<{}> {
+    return this.http.get('https://api.jikan.moe/anime/' + id + '/').pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
       const err = error || '';
@@ -38,7 +62,4 @@ export class RestProvider {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
-
-
-
 }
